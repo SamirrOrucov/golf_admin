@@ -21,13 +21,10 @@ const index = () => {
     return e?.fileList;
   };  
   const onFinish = async (values)  => {
-    console.log("value",values);
-
+ 
     const formData = new FormData();
     Object.entries(values).forEach(([key, value]) => {
-    console.log("key",key);
-    console.log("value",value);
-
+  
       if (key === 'upload') {
         
         if (value) {
@@ -46,7 +43,7 @@ const index = () => {
     }
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/Country/Update/` + id,
+        `${import.meta.env.VITE_BASE_URL}/Gallery/Update/` + id,
         {
           method: 'POST',
           headers: {
@@ -62,7 +59,7 @@ const index = () => {
 
       message.success('Əlavə olundu!');
       setTimeout(() => {
-        navigate('/country');
+        navigate('/gallery');
       }, 1000);
     } catch (err) {
       console.error('Error posting data:', err.message || err);
@@ -71,7 +68,7 @@ const index = () => {
   const getData = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/Country/${id}`,
+        `${import.meta.env.VITE_BASE_URL}/Gallery/${id}`,
         {
           method: 'GET',
           headers: {
@@ -103,17 +100,7 @@ const index = () => {
         <Row align={'middle'} justify={'center'}>
           <Col span={24}>
             <Form onFinish={onFinish} form={form} layout="vertical">
-              <Form.Item
-                rules={[
-                  {
-                    required: true
-                  }
-                ]}
-                label={'Başlıq'}
-                name={'name'}
-              >
-                <Input placeholder="Başlığı qeyd edin" />
-              </Form.Item>
+     
 
               <Form.Item
                 name="upload"
@@ -138,7 +125,7 @@ const index = () => {
               <Row justify={'end'}>
                 <Col span={24} style={{ display: 'flex', gap: '20px' }}>
                   <Button htmlType="submit">Yadda saxla</Button>
-                  <Link to={'/country'}>
+                  <Link to={'/gallery'}>
                     <Button>Ləğv et</Button>
                   </Link>
                 </Col>

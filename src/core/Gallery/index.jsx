@@ -1,4 +1,4 @@
- import { Button, Col, Row, Table , ConfigProvider, Image } from 'antd';
+import { Button, Col, Row, Table , ConfigProvider, Image } from 'antd';
 import { LucidePlus } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
@@ -14,7 +14,7 @@ const country = () => {
 const getData = async (page = 1, size = 10) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/Country?skip=${(page - 1) * size}&take=${size}`,
+      `${import.meta.env.VITE_BASE_URL}/Gallery?skip=${(page - 1) * size}&take=${size}`,
       {
         method: 'GET',
         headers: {
@@ -31,14 +31,14 @@ const getData = async (page = 1, size = 10) => {
     const sortedData = data.sort((a, b) => b.id - a.id);
 
      setData(sortedData);
-   } catch (error) {
+  } catch (error) {
     console.error('Error fetching data:', error.message || error);
   }
 };
 const deleteItem = async (id) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/Country/delete/${id}`,
+      `${import.meta.env.VITE_BASE_URL}/Gallery/delete/${id}`,
       {
         method: 'PUT',
         headers: {
@@ -63,22 +63,16 @@ const columns = [
     title: "Image",
     dataIndex: "imageUrl",
     key: "imageUrl",
-    width: 600,
+    width: 1400,
     render: (all, record) => <Image width={100} height={100} src={VITE_BASE_URL_IMG+record.imageUrl}/>,
-  },
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "Name",
-    width:600,
-  },
+  } ,
   {
     title: "Operations",
-    width: 200,
+    width: 300,
     render: (text, record) => (
-      <Row justify={"space-around"} >
+      <Row style={{gap:"20px"}} >
         <Button onClick={() => deleteItem(record.id)}>Delete</Button>
-        <Link to={"/country/edit/" + record.id}>
+        <Link to={"/gallery/edit/" + record.id}>
           <Button color="black">Edit</Button>
         </Link>
       </Row>
@@ -100,7 +94,7 @@ const columns = [
         <Col span={24} style={{marginTop:"50px"}}>
         <Row justify={"end"}>
           <Col span={2}>
-            <Link to={"/country/add"}>
+            <Link to={"/gallery/add"}>
               <Button defaultHoverBorderColor={"red"} className="add_button">
                 <LucidePlus fontSize={18} /> Yeni
               </Button>
@@ -110,10 +104,10 @@ const columns = [
         <Row>
           <Col span={24}>
             <Table
-              columns={columns}
+               columns={columns}
               dataSource={data}
               pagination={{ pageSize: 5 }}
-              
+ 
             />
           </Col>
         </Row>

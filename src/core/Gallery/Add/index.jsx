@@ -22,8 +22,7 @@ import { UploadIcon } from "lucide-react";
       return e?.fileList;
     };
     const onFinish = async (values) => {
-      console.log("values at add",values);
-      
+       
         const formData = new FormData();
         Object.entries(values).forEach(([key, value]) => {
           if (key === "upload") {
@@ -40,7 +39,7 @@ import { UploadIcon } from "lucide-react";
         });
       
         try {
-          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/Country/create`, {
+          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/Gallery/create`, {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -54,7 +53,7 @@ import { UploadIcon } from "lucide-react";
       
            message.success("Əlavə olundu!");
           setTimeout(() => {
-            navigate("/country");
+            navigate("/gallery");
           }, 1000);
         } catch (err) {
           console.error('Error posting data:', err.message || err);
@@ -68,17 +67,7 @@ import { UploadIcon } from "lucide-react";
             <Row align={"middle"} justify={"center"}>
               <Col span={24}>
                 <Form onFinish={onFinish} layout="vertical">
-                  <Form.Item
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                    label={"Başlıq"}
-                    name={"Name"}
-                  >
-                    <Input placeholder="Başlığı qeyd edin" />
-                  </Form.Item>
+     
   
                   <Form.Item
                     name="upload"
@@ -102,7 +91,7 @@ import { UploadIcon } from "lucide-react";
                   <Row justify={"end"}>
                     <Col span={24} style={{display:"flex",gap:"20px"}}>
                       <Button htmlType="submit">Yadda saxla</Button>
-                      <Link to={"/country"}>
+                      <Link to={"/gallery"}>
                         <Button>Ləğv et</Button>
                       </Link>
                     </Col>

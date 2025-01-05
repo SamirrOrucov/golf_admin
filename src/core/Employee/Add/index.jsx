@@ -22,8 +22,7 @@ import { UploadIcon } from "lucide-react";
       return e?.fileList;
     };
     const onFinish = async (values) => {
-      console.log("values at add",values);
-      
+       
         const formData = new FormData();
         Object.entries(values).forEach(([key, value]) => {
           if (key === "upload") {
@@ -40,7 +39,7 @@ import { UploadIcon } from "lucide-react";
         });
       
         try {
-          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/Country/create`, {
+          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/Employee/create`, {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -54,7 +53,7 @@ import { UploadIcon } from "lucide-react";
       
            message.success("Əlavə olundu!");
           setTimeout(() => {
-            navigate("/country");
+            navigate("/employee");
           }, 1000);
         } catch (err) {
           console.error('Error posting data:', err.message || err);
@@ -74,10 +73,65 @@ import { UploadIcon } from "lucide-react";
                         required: true,
                       },
                     ]}
-                    label={"Başlıq"}
-                    name={"Name"}
+                    label={"FistnameAz"}
+                    name={"FistnameAz"}
                   >
-                    <Input placeholder="Başlığı qeyd edin" />
+                    <Input placeholder="Məlumatı qeyd edin" />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                    label={"FistnameEn"}
+                    name={"FistnameEn"}
+                  >
+                    <Input placeholder="Məlumatı qeyd edin" />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                    label={"LastnameAz"}
+                    name={"LastnameAz"}
+                  >
+                    <Input placeholder="Məlumatı qeyd edin" />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                    label={"LastnameEn"}
+                    name={"LastnameEn"}
+                  >
+                    <Input placeholder="Məlumatı qeyd edin" />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                    label={"PositionAz"}
+                    name={"PositionAz"}
+                  >
+                    <Input placeholder="Məlumatı qeyd edin" />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                    label={"PositionEn"}
+                    name={"PositionEn"}
+                  >
+                    <Input placeholder="Məlumatı qeyd edin" />
                   </Form.Item>
   
                   <Form.Item

@@ -6,6 +6,12 @@ import Contact from '@/core/contact';
 import Country from '@/core/Country/country';
 import AddCountry from '@/core/Country/Add/index.jsx';
 import UpdateCountry from '@/core/Country/Update/index.jsx';
+import Gallery from '@/core/Gallery/index.jsx';
+import AddGallery from '@/core/Gallery/Add/index.jsx';
+import UpdateGallery from '@/core/Gallery/Update/index.jsx';
+import Employee from '@/core/Employee/index.jsx';
+import AddEmployee from '@/core/Employee/Add/index.jsx';
+import UpdateEmployee from '@/core/Employee/Update/index.jsx';
 import PrivateRoute from './private-route';
 
 type RouteWithAuth = RouteObject & {
@@ -36,6 +42,30 @@ const routes: RouteWithAuth[] = [
       }, {
         path: '/country/edit/:id',
         element: <UpdateCountry />
+      },
+      {
+        path: '/gallery',
+        element: <Gallery />
+      },
+      {
+        path: '/gallery/add',
+        element: <AddGallery />
+      },
+      {
+        path: '/gallery/edit/:id',
+        element: <UpdateGallery />
+      },
+      {
+        path: '/employee',
+        element: <Employee />
+      },
+      {
+        path: '/employee/add',
+        element: <AddEmployee />
+      },
+      {
+        path: '/employee/edit/:id',
+        element: <UpdateEmployee />
       },
     ]
   },

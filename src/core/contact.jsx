@@ -24,7 +24,9 @@ import { Button, Col, Row, Table } from 'antd';
       }
 
       const data = await response.json();
-       setData(data);
+      const sortedData = result.sort((a, b) => b.id - a.id);
+
+       setData(sortedData);
     } catch (error) {
       console.error('Error fetching data:', error.message || error);
     }

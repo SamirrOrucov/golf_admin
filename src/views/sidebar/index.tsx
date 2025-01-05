@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings,Contact2 ,LocateIcon} from 'lucide-react';
+import { Calendar, Home, Inbox, Search, Settings,Contact2 ,LocateIcon,Images,Users} from 'lucide-react';
 
 import {
   Sidebar,
@@ -30,20 +30,15 @@ const items = [
     icon: LocateIcon
   },
   {
-    title: 'Contact',
-    url: '/contact',
-    icon: Contact2
+    title: 'Gallery',
+    url: '/gallery',
+    icon: Images
   },
   {
-    title: 'Contact',
-    url: '/contact',
-    icon: Contact2
+    title: 'Employee',
+    url: '/employee',
+    icon: Users
   },
-  {
-    title: 'Contact',
-    url: '/contact',
-    icon: Contact2
-  }
 ];
 
 export function AppSidebar() {
